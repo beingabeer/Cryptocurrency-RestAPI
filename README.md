@@ -1,3 +1,3 @@
 # Cryptocurrency-RestAPI
 
-A simple Rest API for cryptocurrency built using django rest framework
+A simple Rest API for tracking cryptocurrency built using django rest framework
