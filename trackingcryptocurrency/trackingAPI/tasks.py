@@ -24,7 +24,38 @@ def crawl_currency():
             .strip()
             .replace("\n", "")
         )
-        print(cryptocurrency)
+        values = row.find_all("div", class_="valuta")
+        price = values[0].get_text().strip().replace("\n", "")
+        # print(price)
+        market_cap = values[1].get_text().strip().replace("\n", "")
+        # print(market_cap)
+        change = (
+            row.find("div", class_="change")
+            .find("span")
+            .get_text()
+            .strip()
+            .replace("\n", "")
+        )
+        print(
+            {
+                "cryptocurrency": cryptocurrency,
+                "price": price,
+                "market_cap": market_cap,
+                "change": change,
+            }
+        )
+
+        # Add these objects in database
+        Cryptocurrency.objects.create(
+            cryptocurrency=cryptocurrency,
+            price=price,
+            market_cap=market_cap,
+            change=change,
+        )
+
+        # Sleeping to avoid any errors
+        sleep(3)
 
 
 crawl_currency()
+
