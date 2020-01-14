@@ -18,5 +18,5 @@ python3 manage.py runserver
 and finally start the celery worker:
 
 ```
-celery -A cryptocurrencytracking worker -l info
+celery -A trackingcryptocurrency worker -l info
 ```
